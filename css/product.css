@@ -6,9 +6,8 @@
 }
 
 .p-main-container {
-    background-color: rgb(23, 188, 188);
+    background: #ECEFF1;
     width: 100%;
-    height: 100vh;
 }
 
 .main-heading {
@@ -20,51 +19,111 @@
 
 .p-inner-container {
     width: 100%;
-    background-color: blanchedalmond;
+    background-color: white;
     display: flex;
-    align-items: center;
+
     justify-content: center;
     gap: 10px;
-    padding: 1rem 3rem;
+    padding: 0rem 3rem;
+
 
 }
 
 .filter-container {
+
+    align-items: center;
+    position: sticky;
+    top: 100px;
     width: 20%;
-    background-color: rgb(35, 86, 130);
+    margin: 1rem auto;
+    height: 100vh;
+    width: 20%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
     padding: 1rem;
+    padding: 15px;
+    background: #E8F0FE;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
+
+.filter-container h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.filter-container label {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 8px 10px;
+    padding: 6px 10px;
+    width: 80%;
+    font-size: 15px;
+    cursor: pointer;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    background: #fff;
+    transition: 0.3s;
+}
+
+.filter-container input[type="checkbox"] {
+    margin-right: 6px;
+    width: 18px;
+    height: 18px;
+    accent-color: #007bff;
+    cursor: pointer;
+}
+
+.filter-container label:hover {
+    background: #eef5ff;
+    border-color: #007bff;
+}
+
+
 
 .product-container {
     width: 80%;
-    background-color: blueviolet;
-    padding: 1rem;
+    background-color: white;
+    /* box-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.1); */
+    padding: 0rem 1rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
     gap: 1.3rem;
 }
-.cartvalue{
-    background-color: cadetblue;
-    width: 20rem;
+
+.cartvalue {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 1rem;
+    margin: 1rem;
+    width: 310px;
+    transition: transform 0.2s ease;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    
-    justify-content: center;
+    justify-content: space-between;
 }
-.cartvalue img{
+
+.cartvalue:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.cartvalue img {
+    border-radius: 0.3rem;
     width: 100%;
-    height: 30vh;
+    height: 40vh;
     margin-bottom: 0.8rem;
 }
 
-
-.cartvalue .add{
+.cartvalue .add {
     width: 100%;
-     display: inline-block;
+    display: inline-block;
     margin-top: 1rem;
     background-color: #007bff;
     color: #fff;
@@ -79,13 +138,36 @@
     background-color: #0056b3;
 }
 
-.delte-mony{
+.brand_name {
+    margin-bottom: 0.6rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 800;
+    font-size: medium;
+
+}
+
+.price-container {
+    margin-bottom: 0.5rem;
+}
+
+.main-price {
+    font-weight: 700;
+    margin-right: 0.7rem;
+
+}
+
+.delte-mony {
     text-decoration: line-through;
+    opacity: 0.5;
+
 }
-.total-stocks{
+
+.total-stocks {
     display: flex;
+    opacity: 0.7;
 }
-.quantity-container{
+
+.quantity-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -97,18 +179,21 @@
     border-radius: 0.3rem;
     border: 1px solid black;
 }
-.quantity-container button{
+
+.quantity-container button {
     padding: 0.3rem;
     font-weight: 800;
     flex-grow: 1;
     margin: 0 0.2rem;
     background-color: transparent;
-    border: none;;
+    border: none;
+    ;
     width: 100%;
     font-size: large;
-    
+
 }
-.quantity-container p{
+
+.quantity-container p {
     border: 1px solid black;
     flex-grow: 1;
     text-align: center;

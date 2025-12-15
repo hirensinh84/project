@@ -1,18 +1,29 @@
-const output = document.querySelector(".product-container");
-
 import { product } from './allproduct.js';
+
+const output = document.querySelector(".product-container");
+const checkboxes = document.querySelectorAll(".filter-checkbox");
+
 
 
 // ------------------ SHOW PRODUCTS ------------------
-product.forEach((p) => {
+function showproducts(productshow) {
 
-    const card = document.createElement("div");
-    card.className = "cartvalue";
+    output.innerHTML = "";
 
-    card.innerHTML = `
+
+    productshow.forEach((p) => {
+
+        const card = document.createElement("div");
+        card.className = "cartvalue";
+
+        card.innerHTML = `
         <img src=${p.img}>
-        <h2>${p.name}</h2>
-        <div><span>₹${p.price}</span> <span class="delte-mony">₹${p.price * 3}</span></div>
+        <p class="brand_name">${p.name}</p>
+
+        <div class="price-container">
+        <span class="main-price">₹${p.price}</span>
+        <span class="delte-mony">₹${p.price * 3}</span>
+        </div>
 
         <div class="total-stocks">
             <p>Total Stocks Available :</p>
@@ -28,40 +39,41 @@ product.forEach((p) => {
         <button class="add">Add to Cart</button>
     `;
 
-    output.append(card);
+        output.append(card);
 
-    // Quantity controls
-    const quantity = card.querySelector(".quantity");
-    const plusbtn = card.querySelector(".plusbtn");
-    const minusbtn = card.querySelector(".minusbtn");
+        // Quantity controls
+        const quantity = card.querySelector(".quantity");
+        const plusbtn = card.querySelector(".plusbtn");
+        const minusbtn = card.querySelector(".minusbtn");
 
-    let qty = 1;
+        let qty = 1;
 
-    plusbtn.addEventListener("click", () => {
-        if (qty < p.totalstocks) {
-            qty++;
-            quantity.textContent = qty;
-        }
+        plusbtn.addEventListener("click", () => {
+            if (qty < p.totalstocks) {
+                qty++;
+                quantity.textContent = qty;
+            }
+        });
+
+        minusbtn.addEventListener("click", () => {
+            if (qty > 1) {
+                qty--;
+                quantity.textContent = qty;
+            }
+        });
+
+        // ------------------ ADD BUTTON CLICK ------------------
+        const addbtn = card.querySelector(".add");
+
+        addbtn.addEventListener("click", () => {
+            addcart(p, qty);
+            console.log(p);
+            // console.log(qty);
+
+        });
+
     });
-
-    minusbtn.addEventListener("click", () => {
-        if (qty > 1) {
-            qty--;
-            quantity.textContent = qty;
-        }
-    });
-
-    // ------------------ ADD BUTTON CLICK ------------------
-    const addbtn = card.querySelector(".add");
-
-    addbtn.addEventListener("click", () => {
-        addcart(p, qty);
-        console.log(p);
-        // console.log(qty);
-
-    });
-
-});
+}
 
 
 // ------------------ LOCAL STORAGE FUNCTIONS ------------------
@@ -92,7 +104,7 @@ function addcart(p, qty) {
         cart.push({
             id: p.id,
             price: p.price,
-            img:p.img,
+            img: p.img,
             qty: qty,
             totalprice: p.price * qty
         });
@@ -101,4 +113,39 @@ function addcart(p, qty) {
     savedata(cart);
     // console.log("Cart Updated:", cart);
     alert("Added to Cart!");
+}
+
+
+showproducts(product)
+
+
+// filter 
+
+
+
+    checkboxes.forEach(cb => {
+    cb.addEventListener("change", filterproducts);
+});
+
+
+
+function filterproducts() {
+    const selectedArr = [];
+
+    checkboxes.forEach((cb) => {
+        if (cb.checked) {
+            selectedArr.push(cb.value);
+        }
+    });
+
+    if (selectedArr.length === 0) {
+        // If no checkbox selected, show all
+        showproducts(product);
+    } else {
+        // Filter products
+        const filteredList = product.filter(item =>
+            selectedArr.includes(item.category)
+        );
+        showproducts(filteredList);
+    }
 }
