@@ -38,7 +38,7 @@ body {
 
 }
 
-.header-nav nav {
+.header-nav nav ul {
     display: flex;
     margin-right: 5rem;
 }
@@ -47,11 +47,11 @@ body {
     list-style: none;
 }
 
-.header-nav nav a {
+.header-nav nav ul li a {
     text-decoration: none;
     color: #222222;
     margin: 0 2rem;
-    font-size: 1.2vw;
+    font-size: 20px;
     line-height: 40px;
 }
 
@@ -59,31 +59,53 @@ body {
     color: #c9341e;
 }
 
-@media(max-width: 850px) {
-    .main-header {
-        flex-direction: column;
-        height: auto;
-    }
+.three_lin {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    text-align: end;
 
-    .header-nav nav {
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-        margin-top: 1.5rem;
-    }
-
-    .header-nav nav a {
-        margin: 10px 0;
-        font-size: 2.7vw;
-    }
 
 }
+
+@media (max-width: 1055px) {
+    .three_lin {
+        display: block;
+    }
+
+    .header-nav {
+        display: none;
+        position: absolute;
+        top: 85px;
+        left: 0;
+        width: 35%;
+        background-color: white;
+        padding: 20px 0;
+        text-align: center;
+        z-index: 1000;
+    }
+
+    .header-nav.active {
+        display: block;
+        animation: slideIn 0.3s ease-in-out;
+    }
+
+    .header-nav ul {
+        flex-direction: column;
+        list-style: none;
+        padding: 0;
+    }
+
+    .header-nav ul li {
+        margin: 15px 0;
+    }
+}
+
 
 /* ----- header styles end ------- */
 
 /* ----- section styles start ------- */
 .main-section {
-    /* margin-top: 10px; */
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -147,9 +169,19 @@ body {
     top: -5rem;
 }
 
+.welcome_para {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #475569;
+    font-weight: 400;
+    text-align: justify;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
+
 .section-welcome h2 {
     font-size: 2.5rem;
-    color: #333333;
+    color: blue;
     margin-bottom: 1rem;
 }
 
@@ -157,7 +189,6 @@ body {
     text-align: center;
     padding: 2rem 4rem;
     background-color: white;
-    /* box-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.1); */
     margin-left: 4rem;
     margin-right: 4rem;
     position: relative;
@@ -214,22 +245,21 @@ body {
     margin-right: 4rem;
     margin-top: 2rem;
     margin-bottom: 4rem;
-    /* background-color: #0056b3; */
     flex-wrap: wrap;
 }
-.address-heading{
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+.address-heading {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 1rem;
     text-align: center;
     margin-top: 2rem;
 }
 
 .address-container div {
-    /* border: 2px solid black; */
     width: 25%;
     min-height: 30vh;
     margin: 1rem;
-    background-color:#e5e7eb;
+    background-color: #e5e7eb;
     padding: 2rem;
     border-radius: 0.5rem;
     display: flex;
@@ -242,23 +272,28 @@ body {
 
 
 }
-.i{
-    color:orangered;
+
+.i {
+    color: orangered;
     font-size: 30px;
     margin-bottom: 0.5rem;
 }
-.address-title{
+
+.address-title {
     font-weight: 900;
-    font-size:1.5rem;
-    color:#2d8cb1;
+    font-size: 1.5rem;
+    color: #2d8cb1;
 }
-.linke{
-    font-size:18px ;
+
+.linke {
+    font-size: 18px;
     text-decoration: none;
 }
-.m{
+
+.m {
     color: orangered;
 }
+
 @media (max-width: 968px) {
     .address-container div {
         width: 100%;
@@ -267,6 +302,7 @@ body {
         padding: 1.5rem;
     }
 }
+
 /* ----- section styles end ------- */
 
 

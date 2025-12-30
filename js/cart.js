@@ -20,10 +20,16 @@ function showcart() {
     const cartproduct = document.querySelector(".product")
     cartproduct.innerHTML = '';
 
+    let totalItemsQty = 0;
+    let grandTotalPrice = 0;
+
     cart.forEach((item) => {
 
+        totalItemsQty += item.qty;
+        grandTotalPrice += (item.price * item.qty);
+
         const hr = document.createElement("hr");
-        hr.className="hr"
+        hr.className = "hr"
         const productdiv = document.createElement("div");
         productdiv.className = "productdiv";
         console.log(item);
@@ -36,7 +42,7 @@ function showcart() {
         </div>
 
      <div class="cetagary-container">
-     <p>cetegary:${item.qty}</p>
+     <p>Category : ${item.category}</p>
      </div>
      
      
@@ -47,7 +53,7 @@ function showcart() {
      </div>
      
      <div class="price-container">
-      <p>price${item.price}</p>
+      <p >Price : <span class="price">${item.totalprice}</span></p>
      </div>
     
      <div class="remove-container">
@@ -55,12 +61,18 @@ function showcart() {
      </div>
      
      `
-     cartproduct.appendChild(hr); 
-     cartproduct.appendChild(productdiv)
- productdiv.querySelector(".plu").addEventListener("click", () => {
-            item.qty += 1;
-            productdiv.querySelector(".result").textContent = item.qty;
-            setdata(cart); // store updated cart
+        cartproduct.appendChild(hr);
+        cartproduct.appendChild(productdiv)
+
+        productdiv.querySelector(".plu").addEventListener("click", () => {
+            if (item.qty < item.totalqty) {
+                item.qty += 1;
+                productdiv.querySelector(".result").textContent = item.qty;
+                productdiv.querySelector(".price").textContent = item.price * item.qty;
+                setdata(cart);
+                showcart();
+            }
+
         });
 
         // Minus button
@@ -68,19 +80,41 @@ function showcart() {
             if (item.qty > 1) {
                 item.qty -= 1;
                 productdiv.querySelector(".result").textContent = item.qty;
+                productdiv.querySelector(".price").textContent = item.price * item.qty;
                 setdata(cart);
+                showcart();
             }
         });
 
-        // Remove button
         productdiv.querySelector(".remove").addEventListener("click", () => {
-            cart.splice(index, 1); // remove the clicked item
-            setdata(cart); // update localStorage
-            showcart(); // re-render cart
+            const indexToRemove = cart.findIndex(product => product.id === item.id);
+
+            if (indexToRemove !== -1) {
+                cart.splice(indexToRemove, 1);
+                setdata(cart);
+                showcart();
+            }
         });
 
 
     })
+
+    if (cart.length > 0) {
+        const total_summeryDiv = document.querySelector(".main-count");
+        total_summeryDiv.innerHTML = "";
+        const summaryDiv = document.createElement("div");
+        summaryDiv.innerHTML = `
+                <hr class="hr">
+                <div>
+                    <p class="summery_product">Total Products: <b>${cart.length}</b></p>
+                    <p class="summery_total" >Total Quantity: <b>${totalItemsQty}</b></p>
+                    <h3 class="grand_total ">Grand Total: ₹ ${grandTotalPrice}</h3>
+                </div>
+            `;
+        total_summeryDiv.appendChild(summaryDiv);
+    }
 }
+
+
 
 showcart();

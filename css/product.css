@@ -87,7 +87,6 @@
 .product-container {
     width: 80%;
     background-color: white;
-    /* box-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.1); */
     padding: 0rem 1rem;
     display: flex;
     justify-content: space-around;

@@ -68,7 +68,7 @@ function showproducts(productshow) {
         addbtn.addEventListener("click", () => {
             addcart(p, qty);
             console.log(p);
-            // console.log(qty);
+            console.log(qty);
 
         });
 
@@ -90,14 +90,14 @@ function savedata(cart) {
 
 // ------------------ ADD TO CART FUNCTION ------------------
 
-function addcart(p, qty) {
+function addcart(p, qty, totalstocks) {
 
     let cart = getdata();
 
     let existing = cart.find(item => item.id === p.id);
 
     if (existing) {
-        existing.qty += qty;  // update quantity
+        existing.qty += qty;
         existing.totalprice += p.price * qty
 
     } else {
@@ -106,12 +106,13 @@ function addcart(p, qty) {
             price: p.price,
             img: p.img,
             qty: qty,
+            totalqty: p.totalstocks,
+            category: p.category,
             totalprice: p.price * qty
         });
     }
 
     savedata(cart);
-    // console.log("Cart Updated:", cart);
     alert("Added to Cart!");
 }
 
@@ -123,7 +124,7 @@ showproducts(product)
 
 
 
-    checkboxes.forEach(cb => {
+checkboxes.forEach(cb => {
     cb.addEventListener("change", filterproducts);
 });
 
@@ -139,10 +140,10 @@ function filterproducts() {
     });
 
     if (selectedArr.length === 0) {
-        // If no checkbox selected, show all
+
         showproducts(product);
     } else {
-        // Filter products
+
         const filteredList = product.filter(item =>
             selectedArr.includes(item.category)
         );

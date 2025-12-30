@@ -21,7 +21,6 @@
 
 .contact-inner-container {
     width: 90%;
-    /* background-color: aqua; */
     margin: auto;
     padding: 2rem;
     display: flex;
@@ -40,7 +39,7 @@
 .contact-first-row,
 .contact-second-row,
 .contact-third-row,
-.contact-fourth-row{
+.contact-fourth-row {
     width: 90%;
     display: flex;
     margin: auto;
@@ -48,36 +47,35 @@
     align-items: center;
     gap: 2rem;
     margin-top: 3rem;
-    
+
 }
+
 .first-column,
-.second-column{
+.second-column {
     width: 50%;
     background-color: white;
-    /* margin-right: 1rem; */
     display: flex;
     align-items: center;
     justify-content: center;
     padding-left: 0.4rem;
     border-radius: 0.4rem;
-    /* min-width: 0px; */
 }
 
 
 .first-column input,
-.second-column input{
+.second-column input {
     width: 90%;
-    height:3.5rem;
+    height: 3.5rem;
     padding: 1rem;
     border: none;
     outline: none;
-    
+
 }
 
-.contact-third-row textarea{
+.contact-third-row textarea {
     width: 100%;
     background-color: white;
-    padding-left:1rem;
+    padding-left: 1rem;
     font-weight: 900;
     border: none;
     height: 7rem;
@@ -85,17 +83,18 @@
 }
 
 
-.contact-fourth-row button{
+.contact-fourth-row button {
     width: 100%;
     border-radius: 1rem;
-    background-color:rgb(51, 159, 21);
+    background-color: rgb(51, 159, 21);
     padding: 1rem;
     font-weight: 900;
     color: white;
     font-size: 20px;
     border: none;
 }
-.contact-fourth-row button:hover{
+
+.contact-fourth-row button:hover {
     background-color: green;
     cursor: pointer;
 }

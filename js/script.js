@@ -1,6 +1,13 @@
 import { letestp } from './latest_product.js';
 
 
+const navbar = document.querySelector(".header-nav");
+const menu = document.querySelector(".three_lin");
+
+menu.addEventListener('click', () => {
+    navbar.classList.toggle("active");
+})
+
 const slider = document.getElementById("slider");
 const image = slider.querySelectorAll("img");
 
@@ -18,16 +25,16 @@ function showSlide(i) {
         count = i;
     }
 
-    
+
 
     slider.style.transform = `translateX(${-count * 100}vw)`;
 }
 
 
 
-setInterval(function(){
+setInterval(function () {
     showSlide(count + 1)
-},5000)
+}, 5000)
 
 
 
